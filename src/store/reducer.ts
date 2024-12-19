@@ -1,6 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { AppState, initialState } from "./state";
-import { ActionSetLoading, ActionSetError, ActionSetMessage } from "./actions";
+import { ActionSetLoading, ActionSetError, ActionSetMessage, ActionSuccessFetch } from "./actions";
 
 
 export const appReducer = createReducer<AppState>(initialState, (builder) => {
@@ -13,5 +13,10 @@ export const appReducer = createReducer<AppState>(initialState, (builder) => {
         })
         .addCase(ActionSetMessage, (state, action) => {
             state.message = action.payload
+        })
+        .addCase(ActionSuccessFetch, (state, action) => {
+            state.data = action.payload
+            state.error = null
+
         })
 })
